@@ -563,12 +563,15 @@ class JSONInput extends Component {
         }
     }
     onPaste(event){
+        console.log("PASTE EVENT")
         if (this.props.viewOnly) {
             this.stopEvent(event);
         } else {
             event.preventDefault();
             var text = event.clipboardData.getData('text/plain');
-            document.execCommand('insertHTML', false, text);
+            console.log(text)
+            document.execCommand('paste', false, text);
+            //document.execCommand('insertHTML', false, text);
         }
         this.update();
     }
